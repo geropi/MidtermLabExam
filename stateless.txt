@@ -1,0 +1,40 @@
+//imports pre-built widgets
+import 'package:flutter/material.dart';
+
+//main method - starting point of the flutter program
+void main() {
+  runApp( //center
+    const MaterialApp(
+      home: Scaffold(
+        body: Center( //centers the widget
+          child: Counter(),//calls the Counter class
+        ),
+      ),
+    ),
+  );
+}
+//converted the stateful widget to stateless
+class Counter extends StatelessWidget { //counterclass
+  const Counter({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    int _counter = 0; //initial value of counter which is 0
+    void _increment() { //method that increments the counter
+      // removed the set state.
+      _counter++;
+    }
+
+    return Row( //returns the button
+      mainAxisAlignment: MainAxisAlignment.center, //keeps the widget at the center
+      children: <Widget>[
+        ElevatedButton(
+          onPressed: _increment, //triggers the increment method when pressed
+          child: const Text('Increment'),
+        ),
+        const SizedBox(width: 16),
+        Text('Count: $_counter'),
+      ],
+    );
+  }
+}
